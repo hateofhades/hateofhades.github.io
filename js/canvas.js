@@ -12,21 +12,6 @@ $(document).ready(function() {
   draw();
   animateCircles();
 
-  //Functions for later. Balls will change color
-  /*function mixColors(color1, color2, weight) {
-    var w1 = weight;
-    var w2 = 1 - w1;
-    var rgb = [Math.round(color1[0] * w1 + color2[0] * w2),
-        Math.round(color1[1] * w1 + color2[1] * w2),
-        Math.round(color1[2] * w1 + color2[2] * w2)];
-    return rgb;
-  }
-
-  function hexToRGB(hex) {
-    var res = hex.match(/[a-f0-9]{2}/gi);
-    return res && res.length === 3 ? res.map(function(v) {return parseInt(v, 16)}) : null;
-  }*/
-
   function generateCircle(howMany, x = 0, y = 0) {
     for(i=0; i<howMany; i++) {//Generate a random circle somwhere in the canvas and of a range from 1-5 pixels.
       if(x == 0)
@@ -42,16 +27,15 @@ $(document).ready(function() {
       var circleR = 1 + Math.random() * 10;
 
       var circle = [];
-      circle.push(circleX);
-      circle.push(circleY);
-      circle.push(circleR);
-      circle.push(0);
-      circle.push(0);
-      circle.push(0);
+      circle.push(circleX); //X - 0
+      circle.push(circleY); //Y - 1
+      circle.push(circleR); //Radius - 2
+      circle.push(0); //Speed and direction on x axis - 3
+      circle.push(0); //Speed and direction on y axis - 4
+      circle.push(0); //Frames till change of the direction - 5
 
       //Add the circle to the circles array so we can access it later.
       circles.push(circle);
-
     }
   }
 
@@ -82,7 +66,7 @@ $(document).ready(function() {
       }
 
       //If it hit the edge get a new speed and direction
-      if(circles[i][0] > canvas.width || circles[i][1] > canvas.height || circles[i][1] < 0 || circles[i][0] < 0) {
+      if(circles[i][0] > window.innerWidth || circles[i][1] > window.innerHeight || circles[i][1] < 0 || circles[i][0] < 0) {
         circles[i][5] = 0;
         i -= 1;
       }
@@ -121,7 +105,8 @@ $(document).ready(function() {
     for(var i=0; i < circles.length; i++) { //Start drawing each circle
       context.beginPath();
       context.arc(circles[i][0], circles[i][1], circles[i][2], 0, 2 * Math.PI);
-      context.fillStyle="#000000";
+      context.fillStyle="#888888";
+      context.strokeStyle="#666666";
       context.fill();
       context.stroke();
     }
