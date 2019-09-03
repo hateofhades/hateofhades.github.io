@@ -5,16 +5,27 @@
     <title>Andreistalker - {{ page.title }}</title>
     <!-- link to main stylesheet -->
     <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Vollkorn&display=swap" rel="stylesheet">
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"></script>
+    <script src="/js/canvas.js"></script>
+
+
     {% feed_meta %}
 </head>
-
 <body>
+  <canvas id="myCanvas" width="800" height="800" style="position:absolute;top:0;left:0;z-index:-1;"></canvas>
+
     <nav>
         <ul>
             <li><a href="/">Home</a></li>
+            <li><a href="/projects">Projects</a></li>
             <li><a href="/blog">Blog</a></li>
         </ul>
     </nav>
+
     <div class="container">
 
         {{ content }}
