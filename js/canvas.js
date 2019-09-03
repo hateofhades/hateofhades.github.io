@@ -65,8 +65,8 @@ $(document).ready(function() {
 
         //vx = x-axis speed and direction
         //vy = y-axis speed and direction
-        var vx = 0.3 + Math.random() * 3 * Math.pow(-1, Math.round(Math.random()));
-        var vy = 0.3 + Math.random() * 3 * Math.pow(-1, Math.round(Math.random()));
+        var vx = Math.random() * 3 * Math.pow(-1, Math.round(Math.random()));
+        var vy = Math.random() * 3 * Math.pow(-1, Math.round(Math.random()));
 
         //Save the speed and direction for x and y axis and add it to the current location for x and y axis.
         circles[i][3] = vx;
